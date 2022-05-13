@@ -1,5 +1,5 @@
 <template>
-  <div id="mermaid" class="mermaid">{{ parseCode }}</div>
+  <div :id="id" class="mermaid">{{ parseCode }}</div>
 </template>
 
 <script>
@@ -7,6 +7,10 @@ import mermaid from "mermaid";
 export default {
   name: "VueMermaid",
   props: {
+    id: {
+      type: String,
+      default: "mermaid"
+    },
     type: {
       type: String,
       default: "graph TD"
@@ -232,7 +236,7 @@ export default {
     },
     load(code) {
       if (code) {
-        var container = document.getElementById("mermaid");
+        var container = document.getElementById(this.id);
         if (container) {
           container.removeAttribute("data-processed");
           container.replaceChild(
