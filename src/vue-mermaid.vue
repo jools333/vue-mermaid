@@ -244,7 +244,7 @@ export default {
             container.firstChild
           );
           try {
-            mermaid.init(code, container);
+            setTimeout(function(){mermaid.init(code, container);});
           } catch (error) {
             if (this.stopOnError) {
               throw error;
