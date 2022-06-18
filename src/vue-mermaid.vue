@@ -189,7 +189,7 @@ export default {
         nodes
           .filter(item => item.editable)
           .map(item => {
-            return `click ${item.id} mermaidClick`;
+            return `click ${item.id} ${this.id}Click`;
           })
           .join("\n") +
         "\n" +
@@ -229,7 +229,7 @@ export default {
     },
     init() {
       const _t = this;
-      window.mermaidClick = function(id) {
+      window[this.id + "Click"] = function(id) {
         _t.edit(id);
       };
       mermaid.initialize(Object.assign(this.defaultConfig, this.config));
