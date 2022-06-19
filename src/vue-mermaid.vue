@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="mermaid">{{ parseCode }}</div>
+  <div :id="id" class="mermaid"></div>
 </template>
 
 <script>
@@ -61,9 +61,13 @@ export default {
       ]
     };
   },
+  watch: {
+    nodes: function(newVal, oldVal) {
+      this.loadNodes();
+    }
+  },
   mounted() {
     this.init();
-    this.loadNodes();
   },
   computed: {
     nodeObject() {
@@ -97,8 +101,6 @@ export default {
         const parseCode = this.type + "\n";
         const groupNodes = this.getGroupNodes(nodes);
         const code = parseCode + groupNodes + this.customStyle.join(" \n");
-        this.load(code);
-        console.log(code);
         return code;
       } else {
         return "";
@@ -239,12 +241,9 @@ export default {
         var container = document.getElementById(this.id);
         if (container) {
           container.removeAttribute("data-processed");
-          container.replaceChild(
-            document.createTextNode(code),
-            container.firstChild
-          );
+          container.innerHTML = code;
           try {
-            setTimeout(function(){mermaid.init(code, container);});
+            mermaid.init(code, container);
           } catch (error) {
             if (this.stopOnError) {
               throw error;
