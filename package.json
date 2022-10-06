@@ -31,7 +31,7 @@
     "url": "https://github.com/robin1liu/vue-mermaid.git"
   },
   "dependencies": {
-    "mermaid": "^9.1.7"
+    "mermaid": "^8.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
