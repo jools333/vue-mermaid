@@ -101,6 +101,7 @@ export default {
         const parseCode = this.type + "\n";
         const groupNodes = this.getGroupNodes(nodes);
         const code = parseCode + groupNodes + this.customStyle.join(" \n");
+        this.load(code);
         return code;
       } else {
         return "";
@@ -158,7 +159,7 @@ export default {
             });
             const innerNodesStr = this.buildNodesStr(innerNodes);
             const outNodeStr = this.buildNodesStr(outNodes);
-            return `subgraph ${groupName} \n ${innerNodesStr} end \n ${outNodeStr}`;
+            return `subgraph ${groupName}\n ${innerNodesStr} end \n ${outNodeStr}`;
           } else {
             const nodesStr = this.buildNodesStr(narr);
             return nodesStr;
