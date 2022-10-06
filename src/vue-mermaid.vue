@@ -130,6 +130,7 @@ export default {
                   id: node.id,
                   text: node.text,
                   style: node.style,
+                  edgeType: node.edgeType,
                   editable: node.editable
                 });
                 node.next.forEach(id => {
@@ -138,6 +139,7 @@ export default {
                       id: node.id,
                       text: node.text,
                       link: node.link,
+                      edgeType: node.edgeType,
                       next: [id]
                     });
                   } else {
@@ -145,6 +147,7 @@ export default {
                       id: node.id,
                       text: node.text,
                       link: node.link,
+                      edgeType: node.edgeType,
                       next: [id]
                     });
                   }
